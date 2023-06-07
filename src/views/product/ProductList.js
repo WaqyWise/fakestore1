@@ -10,7 +10,7 @@ export function ProductList() {
   const loading = useSelector(state => state.product.loading);
   const products = useSelector(state => state.product.products);
   const isEmpty = products.length === 0 && !loading;
-  const categories = useSelector(state => state.product.categories)
+  const categories = useSelector(state => state.categories.categories)
   // initialize dispatch function using useDispatch hook
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ export function ProductList() {
   }, []);
   useEffect(() => {
     handleCategories();
-  },[]);
+  },);
 
   return (
     <Container>

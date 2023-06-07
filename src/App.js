@@ -8,7 +8,7 @@ import { CartIcon } from "./icons";
 function App() {
   const products = useSelector(state => state.product.products);
   const isLoading = useSelector(state => state.product.loading);
-  const { amount } = useSelector(state => state.product);
+  
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -29,9 +29,6 @@ function App() {
             )}
           </div>
         </Container>
-        <div className="amount-container">
-          <p className="total-amount">{amount}</p>
-        </div>
         <CartIcon />
       </Navbar>
       <ProductList />
