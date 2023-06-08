@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { api } from "../../api";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {api} from "../../api";
+import Product from "../models/product";
 
 // create async function to fetch products
 export const fetchProducts = createAsyncThunk(
@@ -7,9 +8,9 @@ export const fetchProducts = createAsyncThunk(
   "product/fetchProducts",
   async () => {
     // fetch products from api using axios client
-    const response = await api.product.browse();
+    const {data} = await api.product.browse();
     // return products
-    return response.data;
+    return data.map((product) => Product.fromJson(product));
   }
 );
 
@@ -17,11 +18,11 @@ export const fetchProducts = createAsyncThunk(
 export const productSlice = createSlice({
   name: "product",
   // `createSlice` will infer the state type from the `initialState` argument
-    
-    initialState: {
+
+  initialState: {
     total: 0,
     loading: false,
-    products: []
+    products: [],
   },
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
@@ -45,7 +46,7 @@ export const productSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setLoading, clearProducts } = productSlice.actions;
+export const {setLoading, clearProducts} = productSlice.actions;
 
 // export product reducer
 export default productSlice.reducer;
