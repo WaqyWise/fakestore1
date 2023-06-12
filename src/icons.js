@@ -3,8 +3,8 @@ export const CartIcon = () =>{
     <svg xmlns="http://www.w3.org/2000/svg"     
     width="30" 
     height="30" 
-    fill="currentColor" 
-    class="bi bi-bag-x-fill" 
+    fill="grey" 
+    class="" 
     viewBox="0 0 16 16">
     <path 
     fill-rule="evenodd" 

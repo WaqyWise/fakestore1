@@ -33,22 +33,30 @@ export function ProductList() {
   }, []);
   useEffect(() => {
     handleCategories();
-  },);
+  },[]);
 
   return (
     <Container>
       <Row className="justify-content-center">
-        <Col xs={12} className="my-2 d-flex justify-content-end">
-          <Button className="mx-4" onClick={handleClear} variant="secondary">
+        <Col xs={3} className="my-2 d-flex justify-content-end">
+          <Button 
+            className="mx-4" 
+            onClick={handleClear} 
+            variant="secondary">
             Clear
           </Button>
-          <Button onClick={handleRefresh}>
+          <Button 
+            onClick={handleRefresh}>
             Refresh
           </Button>
-          <Button className="mx-4" onClick={handleCategories} variant="danger">Categories
+          <Button className="mx-4" 
+            onClick={handleCategories} 
+            variant="danger">
+            Categories
           </Button>
         </Col>
-        <Col xs={9}>
+        <Col xs={12}>
+          <h1>Category 1:</h1>
           {loading && (
             <div className="product-list-loading">
               <Spinner animation="border" role="status">
@@ -70,10 +78,6 @@ export function ProductList() {
               ))}
             </Row>
           )}
-          {categories && (
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Categories...</span>
-              </Spinner>)}
         </Col>
       </Row>
     </Container>
