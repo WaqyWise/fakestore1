@@ -1,18 +1,17 @@
-import "./App.css";
-import { Index } from "./views/product/Index";
+import "../App.css";
+import { Index } from "../views/product/Index";
 import { Container, Navbar, Spinner, ButtonGroup, Button, Row, Col, Image, Card, ListGroup, InputGroup, Form} from "react-bootstrap";
 import { useSelector } from "react-redux";
 import React from "react";
-import { CartIcon } from "./icons";
+import { CartIcon } from "../icons";
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import { Home } from "../src/views/Home"
 
-function App() {
+
+export const Home = () => {
   const products = useSelector(state => state.product.products);
   const isLoading = useSelector(state => state.product.loading);
   
   return (
-    <Router>
     <div>
     <header>
       <Navbar bg="light" expand="lg">
@@ -21,7 +20,7 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <ButtonGroup aria-label="Basic example">
           <Link to="/"><Button variant="outline-dark">Shop</Button></Link>
-          <Link to="/category:"><Button variant="outline-dark">Products</Button></Link>
+          <Link to="/product"><Button variant="outline-dark">Products</Button></Link>
           <Link to="/contacts"><Button variant="outline-dark">Contacts</Button></Link>
           </ButtonGroup>
           <div className="d-flex align-items-center">
@@ -105,16 +104,7 @@ function App() {
         </Navbar>
       </footer>
     </div>
-    <Switch>
-      <Route path="/">
-        <Home />
-      </Route>
-      <Route path="/category:">
-      <Index />
-      </Route>
-    </Switch>
-    </Router>
-  );
+  )
 }
 
-export default App;
+

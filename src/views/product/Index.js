@@ -5,7 +5,7 @@ import { clearProducts, fetchProducts } from "../../store/modules/product";
 import { fetchCategories } from "../../store/modules/categories";
 import { ProductCard } from "../../components/product/ProductCard";
 
-export function ProductList() {
+export function Index() {
   // get products and loading state from redux store using useSelector hook
   const loading = useSelector(state => state.product.loading);
   const products = useSelector(state => state.product.products);
@@ -56,7 +56,7 @@ export function ProductList() {
           </Button>
         </Col>
         <Col xs={12}>
-          <h1>Category 1:</h1>
+          <h1>Category :</h1>       
           {loading && (
             <div className="product-list-loading">
               <Spinner animation="border" role="status">
