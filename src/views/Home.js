@@ -7,7 +7,7 @@ import { CartIcon } from "../icons";
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 
-export const Home = () => {
+export function Home() {
   const products = useSelector(state => state.product.products);
   const isLoading = useSelector(state => state.product.loading);
   

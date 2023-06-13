@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import React from "react";
 import { CartIcon } from "./icons";
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import { Home } from "../src/views/Home"
+import { Home} from "../src/views/Home"
+import { View } from "./components/product/View";
 
 function App() {
   const products = useSelector(state => state.product.products);
@@ -106,11 +107,14 @@ function App() {
       </footer>
     </div>
     <Switch>
+      <Route path="/category:">
+        <Index />
+      </Route>
+      <Route path="/product/:product_id">
+        <View />
+      </Route>
       <Route path="/">
         <Home />
-      </Route>
-      <Route path="/category:">
-      <Index />
       </Route>
     </Switch>
     </Router>
