@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Button, Row, Col, Image, Card } from "react-bootstrap";
+import { BrowserRouter as Link} from "react-router-dom";
 
 const Main = () => {
   return (
@@ -10,7 +11,7 @@ const Main = () => {
               <h1 class="font-weight-light">The Best Place To </h1>
               <h1 class="font-weight-light">Find And Buy</h1>
               <h1 class="font-weight-light">Amazing Products</h1>
-              <Button variant="dark" class="">Shop now!</Button>
+              <Link path="/product/:product_id"><Button variant="dark" class="">Shop now!</Button></Link>
             </Col>
             <Col sm={5}>
               <Image src="https://dummyimage.com/1000x600/a19ca1/fafafa.jpg&text=Example" 

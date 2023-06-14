@@ -15,8 +15,8 @@ const Header = () => {
           <Navbar.Brand href="/">Fake Store</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <ButtonGroup aria-label="Basic example">
-          <Button variant="outline-dark">Shop</Button>
-          <Button variant="outline-dark">Products</Button>
+          <p><Link to="/">Shop</Link></p>
+          <Link to="/:category">Products</Link>
           <Link to="/contacts"><Button variant="outline-dark">Contacts</Button></Link>
           </ButtonGroup>
           <div className="d-flex align-items-center">

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Index } from '../../views/product/Index'
  
-export function View () {
+const View = () => {
   return (
       <h1>Welcome</h1>
   )
 }
+export default View
