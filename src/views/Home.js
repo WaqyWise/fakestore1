@@ -1,16 +1,13 @@
 import "../App.css";
-import  Header  from "../components/Header"
 import Main from "../components/Main";
-import Footer from "../components/Footer";
-
+import { Index } from "./product/Index";
 
 const Home = () => {
 
   return (
     <div>
-      <Header />
       <Main />
-      <Footer />
+      <Index class="py-5"/>
     </div>
   )
 };
