@@ -6,7 +6,6 @@ import  Home from "../src/views/Home"
 import View  from "./components/product/View";
 import  Header  from "../src/components/Header"
 import Footer from "./components/Footer";
-import ProductIndex from "./views/product/ProductIndex";
 
 export function App() {
 

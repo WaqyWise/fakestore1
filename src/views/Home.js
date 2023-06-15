@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <div>
       <Main />
-      <Index class="py-5"/>
     </div>
   )
 };

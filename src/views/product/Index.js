@@ -4,8 +4,8 @@ import React, { useEffect } from "react";
 import { clearProducts, fetchProducts } from "../../store/modules/product";
 import { fetchCategories } from "../../store/modules/categories";
 import { ProductCard } from "../../components/product/ProductCard";
-import {ProductIndex} from "./ProductIndex";
-import {Route , Switch} from "react-router-dom"
+import {Route} from "react-router-dom"
+import ProductFilters from "../../components/ProductFilters";
 
 export function Index() {
   // get products and loading state from redux store using useSelector hook
@@ -39,30 +39,11 @@ export function Index() {
 
   return (
     <Container>
-      <Switch>
-        <Route path="/:category" style={{justifyContent: "flex-start"}}component={ProductIndex} />
-      </Switch>
-      <Row className="justify-content-center">
-        <Col xs={3} className="my-2 d-flex justify-content-end">
-          <Button 
-            className="mx-4" 
-            onClick={handleClear} 
-            variant="secondary">
-            Clear
-          </Button>
-          <Button 
-            onClick={handleRefresh}>
-            Refresh
-          </Button>
-          <Button className="mx-4" 
-            onClick={handleCategories} 
-            variant="danger">
-            Categories
-          </Button>
-        </Col>
-       
-        <Col xs={12}>
-          <h1>Category :</h1>       
+      <Col xs={12}>
+        <div> 
+        <Route path="/:category" component={ProductFilters} />
+        </div>
+         <h1>Category :</h1> 
           {loading && (
             <div className="product-list-loading">
               <Spinner animation="border" role="status">
@@ -85,8 +66,6 @@ export function Index() {
             </Row>
           )}
         </Col>
-      </Row>
-      
     </Container>
 );
 }
