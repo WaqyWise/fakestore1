@@ -3,7 +3,7 @@ import { Index } from "./views/product/Index";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import  Home from "../src/views/Home"
-import View  from "./components/product/View";
+import View  from "../src/components/product/View";
 import  Header  from "../src/components/Header"
 import Footer from "./components/Footer";
 

@@ -1,8 +1,9 @@
 import React from 'react'
- 
-const View = () => {
+import {Button, Card, ListGroup} from "react-bootstrap";
+
+export default function View(props) {
+
   return (
-      <h1>Welcome</h1>
-  )
+    <div></div>
+  );
 }
-export default View

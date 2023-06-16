@@ -1,6 +1,5 @@
 import "../App.css";
 import Main from "../components/Main";
-import { Index } from "./product/Index";
 
 const Home = () => {
 

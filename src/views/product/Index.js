@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { clearProducts, fetchProducts } from "../../store/modules/product";
 import { fetchCategories } from "../../store/modules/categories";
 import { ProductCard } from "../../components/product/ProductCard";
-import {Route} from "react-router-dom"
 import ProductFilters from "../../components/ProductFilters";
 
 export function Index() {
@@ -39,33 +38,35 @@ export function Index() {
 
   return (
     <Container>
-      <Col xs={12}>
-        <div> 
-        <Route path="/:category" component={ProductFilters} />
+  <Row>
+    <Col lg={4}>
+      <ProductFilters />
+    </Col>
+    <Col xs={12} lg={8}>
+      <h1>Category :</h1>
+      {loading && (
+        <div className="product-list-loading">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
         </div>
-         <h1>Category :</h1> 
-          {loading && (
-            <div className="product-list-loading">
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            </div>
-          )}
-          {isEmpty && (
-            <div className="product-list-loading">
-              <p>No products found!</p>
-            </div>
-          )}
-          {!loading && (
-            <Row className="align-items-stretch">
-              {products.map(product => (
-                <Col xs={3} className="py-2">
-                  <ProductCard key={product.id} {...product} />
-                </Col>
-              ))}
-            </Row>
-          )}
-        </Col>
-    </Container>
+      )}
+      {isEmpty && (
+        <div className="product-list-loading">
+          <p>No products found!</p>
+        </div>
+      )}
+      {!loading && (
+        <Row className="align-items-stretch">
+          {products.map(product => (
+            <Col xs={3} className="py-2">
+              <ProductCard key={product.id} {...product} />
+            </Col>
+          ))}
+        </Row>
+      )}
+    </Col>
+  </Row>
+</Container>
 );
 }
