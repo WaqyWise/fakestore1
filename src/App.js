@@ -14,10 +14,10 @@ export function App() {
     <div>
       <Header />
       <Switch>
-        <Route path="/:category">
+        <Route exact path="/:category">
           <Index />
         </Route>
-        <Route path="/product/:product_id">
+        <Route exact path="/product/:product_id">
           <View />
         </Route>
         <Route exact path="/">
