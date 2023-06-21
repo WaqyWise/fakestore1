@@ -14,14 +14,14 @@ const Footer = () => {
               <ListGroup.Item>Pricing</ListGroup.Item>
               </ListGroup>
           </Card>
-          <Card style={{ width: '14rem', height: '8rem',border:'light' }}>
+          <Card style={{ width: '14rem', height: '8rem',borderStyle:'hidden' }}>
             <ListGroup variant="dark">
               <ListGroup.Item style={{fontWeight: 'bold'}}>Resources</ListGroup.Item>
               <ListGroup.Item>Blog</ListGroup.Item>
               <ListGroup.Item>User guides</ListGroup.Item>
               </ListGroup>
           </Card>
-          <Card style={{ width: '14rem', height: '8rem',borderStyle: 'none' }}>
+          <Card style={{ width: '14rem', height: '8rem',borderStyle:'hidden' }}>
             <ListGroup variant="dark" >
               <ListGroup.Item style={{fontWeight: 'bold'}}>Company</ListGroup.Item>
               <ListGroup.Item>About</ListGroup.Item>
