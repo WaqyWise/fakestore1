@@ -1,11 +1,12 @@
 import { Button, Col, Container, Row, Spinner} from "react-bootstrap";
-import { useDispatch, useSelector, useParams } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import React, { useEffect } from "react";
 import { clearProducts, fetchProducts } from "../../store/modules/product";
 import { fetchCategories } from "../../store/modules/categories";
 import { ProductCard } from "../../components/product/ProductCard";
 import ProductFilters from "../../components/ProductFilters";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
 export function Index() {
   // get products and loading state from redux store using useSelector hook
@@ -17,10 +18,12 @@ export function Index() {
   
   // initialize dispatch function using useDispatch hook
   const dispatch = useDispatch();
+  const params = useParams();
+  const categoryNameVariable = params.categoryName;
   
   const handleRefresh = () => {
     // dispatch fetchProducts action using dispatch function
-    dispatch(fetchProducts());
+    dispatch(fetchProducts(categoryNameVariable));
   };
 
   const handleClear = () => {
@@ -30,9 +33,8 @@ export function Index() {
   const handleCategories = () => {
     dispatch(fetchCategories());
   }
-  const category = () => {
-  dispatch(fetchProducts(category));
-}
+ 
+
   // fetch products on component mount
   useEffect(() => {
     handleRefresh();
@@ -71,13 +73,12 @@ export function Index() {
       )}
     </Col>
   </Row>
-  <div>
         {categories.map((category, index) => (
         <Link key={index} to={`/${category}`}>
           Go to {category.charAt(0).toUpperCase() + category.slice(1)}
           </Link>
         ))}
-        </div>
+     
 </Container>
 );
-}
+        }
