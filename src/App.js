@@ -6,6 +6,7 @@ import  Home from "../src/views/Home"
 import View  from "../src/components/product/View";
 import  Header  from "../src/components/Header"
 import Footer from "./components/Footer";
+import Electronics from "./components/category/Electronics";
 
 export function App() {
 
@@ -22,6 +23,9 @@ export function App() {
         </Route>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/:category/Electronics">
+          <Electronics />
         </Route>
       </Switch>
         <Footer />

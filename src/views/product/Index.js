@@ -1,5 +1,5 @@
 import { Button, Col, Container, Row, Spinner} from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useParams } from "react-redux";
 import React, { useEffect } from "react";
 import { clearProducts, fetchProducts } from "../../store/modules/product";
 import { fetchCategories } from "../../store/modules/categories";
@@ -12,7 +12,7 @@ export function Index() {
   const loading = useSelector(state => state.product.loading);
   const products = useSelector(state => state.product.products);
   const isEmpty = products.length === 0 && !loading;
-  const category = useSelector(state => state.categories.categories);
+  // const category = useSelector(state => state.categories.categories);
   const categories = ['Electronics', 'Smartphones', 'Mensclothing', 'Womensclothing'];
   
   // initialize dispatch function using useDispatch hook
@@ -30,11 +30,13 @@ export function Index() {
   const handleCategories = () => {
     dispatch(fetchCategories());
   }
-
+  const category = () => {
+  dispatch(fetchProducts(category));
+}
   // fetch products on component mount
   useEffect(() => {
     handleRefresh();
-    dispatch(handleCategories());
+    handleCategories();
   },[]);
 
   return (
