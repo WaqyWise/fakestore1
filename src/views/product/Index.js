@@ -13,9 +13,11 @@ export function Index() {
   const products = useSelector(state => state.product.products);
   const isEmpty = products.length === 0 && !loading;
   const category = useSelector(state => state.categories.categories);
+  const categories = ['Electronics', 'Smartphones', 'Mensclothing', 'Womensclothing'];
+  
   // initialize dispatch function using useDispatch hook
   const dispatch = useDispatch();
-  const categories = ['Electronics', 'Smartphones', 'Mensclothing', 'Womensclothing']
+  
   const handleRefresh = () => {
     // dispatch fetchProducts action using dispatch function
     dispatch(fetchProducts());
@@ -32,7 +34,7 @@ export function Index() {
   // fetch products on component mount
   useEffect(() => {
     handleRefresh();
-    handleCategories();
+    dispatch(handleCategories());
   },[]);
 
   return (
@@ -68,10 +70,10 @@ export function Index() {
     </Col>
   </Row>
   <div>
-          {categories.map((category, index) => (
-            <Link key={index} to={`/${category}`}>
-              Go to {category.charAt(0).toUpperCase() + category.slice(1)}
-            </Link>
+        {categories.map((category, index) => (
+        <Link key={index} to={`/${category}`}>
+          Go to {category.charAt(0).toUpperCase() + category.slice(1)}
+          </Link>
         ))}
         </div>
 </Container>
