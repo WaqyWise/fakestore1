@@ -14,7 +14,7 @@ export function App() {
     <div>
       <Header />
       <Switch>
-        <Route exact path="/:category">
+        <Route exact path="/:categoryName">
           <Index />
         </Route>
         <Route exact path="/product/:product_id">

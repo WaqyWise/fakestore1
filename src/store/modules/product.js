@@ -6,9 +6,9 @@ import Product from "../models/product";
 export const fetchProducts = createAsyncThunk(
   // action name
   "product/fetchProducts",
-  async () => {
+  async (category) => {
     // fetch products from api using axios client
-    const {data} = await api.product.browse();
+    const {data} = await api.product.browseByCategory(category);
     // return products
     return data.map((product) => Product.fromJson(product));
   }

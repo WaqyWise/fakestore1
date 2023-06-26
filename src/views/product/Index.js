@@ -13,17 +13,18 @@ export function Index() {
   const loading = useSelector(state => state.product.loading);
   const products = useSelector(state => state.product.products);
   const isEmpty = products.length === 0 && !loading;
-  // const category = useSelector(state => state.categories.categories);
-  const categories = ['Electronics', 'Smartphones', 'Mensclothing', 'Womensclothing'];
+  const categories = useSelector(state => state.categories.categories);
+
+
   
   // initialize dispatch function using useDispatch hook
   const dispatch = useDispatch();
   const params = useParams();
-  const categoryNameVariable = params.categoryName;
+  const categoryName = params.categoryName;
   
   const handleRefresh = () => {
     // dispatch fetchProducts action using dispatch function
-    dispatch(fetchProducts(categoryNameVariable));
+    dispatch(fetchProducts(categoryName));
   };
 
   const handleClear = () => {
@@ -39,7 +40,7 @@ export function Index() {
   useEffect(() => {
     handleRefresh();
     handleCategories();
-  },[]);
+  },[categoryName]);
 
   return (
     <Container>
@@ -48,7 +49,7 @@ export function Index() {
       <ProductFilters />
     </Col>
     <Col xs={12} lg={8}>
-      <h1>Category :</h1>
+      <h1>Category : {categoryName}</h1>
       {loading && (
         <div className="product-list-loading">
           <Spinner animation="border" role="status">
@@ -73,12 +74,12 @@ export function Index() {
       )}
     </Col>
   </Row>
-        {categories.map((category, index) => (
+        {/* {categories.map((category, index) => (
         <Link key={index} to={`/${category}`}>
           Go to {category.charAt(0).toUpperCase() + category.slice(1)}
-          </Link>
-        ))}
+          </Link> */}
+      
      
 </Container>
 );
-        }
+}

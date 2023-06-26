@@ -1,7 +1,11 @@
 import React from 'react'
-import { Accordion , Card, Col, Container, Form, Row, InputGroup} from 'react-bootstrap';
+import { Accordion , Card, Col, Container, Form, Row, InputGroup, ListGroup, ListGroupItem} from 'react-bootstrap';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useSelector } from 'react-redux';
+
 
 const ProductFilters = () => {
+const categories = useSelector(state => state.categories.categories);
   return (
     <div>
     <h1>Filters:</h1>
@@ -11,31 +15,14 @@ const ProductFilters = () => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header variant="outline-dark">Categories</Accordion.Header>
                 <Accordion.Body variant="outline-dark">
-                  <Form.Check
-                    type="checkbox"
-                    id="Electronics"
-                    label="Electronics"
-                    variant="dark"
-  
-                  />
-                  <Form.Check
-                    type="checkbox"
-                    id="Smartphones"
-                    label="Smartphones "
-                    variant = "outline-primary"
-                  />
-                  <Form.Check
-                    type="checkbox"
-                    id="Men's clothing"
-                    label="Men's clothing"
-                    
-                  />
-                  <Form.Check
-                    type="checkbox"
-                    id="Women's clothing"
-                    label="Women's clothing"
-                    
-                  />
+                  <ListGroup>
+                    {categories.map(category => (
+                  <ListGroupItem>
+                    <Link to={`/${category.id}`}>{category.name}</Link></ListGroupItem>
+                 ))}
+                 
+                 </ListGroup>
+                 
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

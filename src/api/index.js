@@ -57,9 +57,10 @@ http.interceptors.response.use(function (response) {
 // export http client modules
 export const api = {
   product: {
-    browse: () => http.get("/products"),
+    browseByCategory: (category) => http.get(`/products/category/${category}`),
   },
   categories: {
     browse: () => http.get("/products/categories"),
   },
+
 }
