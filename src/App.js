@@ -17,7 +17,7 @@ export function App() {
         <Route exact path="/:categoryName">
           <Index />
         </Route>
-        <Route exact path="/product/:product_id">
+        <Route exact path="/product/:id">
           <View />
         </Route>
         <Route exact path="/">

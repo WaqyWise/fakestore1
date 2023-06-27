@@ -24,7 +24,7 @@ useEffect(() => {
               <h1 class="font-weight-light">The Best Place To </h1>
               <h1 class="font-weight-light">Find And Buy</h1>
               <h1 class="font-weight-light">Amazing Products</h1>
-              <Link to="/product/:product_id"><Button variant="dark">Shop now!</Button></Link>
+              <Link to="/product/:id"><Button variant="dark">Shop now!</Button></Link>
             </Col>
             <Col sm={5}>
               <Image src="https://dummyimage.com/1000x600/a19ca1/fafafa.jpg&text=Example" 

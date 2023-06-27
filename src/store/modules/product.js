@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {api} from "../../api";
+import axios from "axios";
 import Product from "../models/product";
 
 // create async function to fetch products
@@ -13,6 +14,25 @@ export const fetchProducts = createAsyncThunk(
     return data.map((product) => Product.fromJson(product));
   }
 );
+
+// craete async function to fetch ProductbyID
+
+export const fetchProductById = createAsyncThunk(
+  // action name 
+  "product/fetchProductById",
+  async (id) => {
+    try{
+      //async to server 
+      const response = await api.product.show(id);
+    return response.data;
+    }
+    catch (error) {
+      throw new Error("Failed to fetch product")
+    }
+  }
+);
+
+
 
 // create product module
 export const productSlice = createSlice({
@@ -41,6 +61,12 @@ export const productSlice = createSlice({
     [fetchProducts.fulfilled.type]: (state, action) => {
       state.loading = false;
       state.products = action.payload;
+    },
+    [fetchProductById.fulfilled.type]: (state,action) => {
+      state.productInstanse = action.payload;
+    },
+    [fetchProductById.rejected.type]: (state) => {
+      state.productInstanse = null;
     }
   }
 });

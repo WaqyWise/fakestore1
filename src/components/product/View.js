@@ -1,17 +1,30 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { Container,Image,Col,Button, Row, ButtonGroup } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom/cjs/react-router-dom';
 import { CartIcon } from '../../icons';
 import Product from "../../store/models/product";
+import { fetchProductById } from '../../store/modules/product';
 
-export default function View(props) {
-  const {image, title, price, rating} = props;
+export default function ProductView() {
+  const productInstanse = useSelector((state) => state.product.productInstanse);
+  const {id} = useParams ();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProductById(id));
+
+  },[dispatch,id]);
 
   return (
    <Container>
-    <Row className="px-4 my-5">
-            
+    <h1>Product Title :</h1>
+
+
+
+    {/* <Row className="px-4 my-5">
             <Col sm={5}>
-              <h1>Product Title :</h1>
               <Image src="https://dummyimage.com/1000x600/a19ca1/fafafa.jpg&text=Example" 
               fluid
               rounded
@@ -26,7 +39,7 @@ export default function View(props) {
               <Button variant="secondary">Check out!</Button>
               </ButtonGroup>
             </Col>
-          </Row>
+          </Row> */}
    </Container>
   );
 }

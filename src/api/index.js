@@ -17,6 +17,8 @@ const http = axios.create({
   responseType: 'json',
 });
 
+
+
 // Add a request interceptor
 http.interceptors.request.use(passTokenInterceptor, function (error) {
   // Do something with request error
@@ -62,5 +64,8 @@ export const api = {
   categories: {
     browse: () => http.get("/products/categories"),
   },
+  show: {
+    productById : (productId) => http.get(`/products/${productId}`)
+  }
 
 }
