@@ -1,17 +1,18 @@
 import {Button, Card, ListGroup} from "react-bootstrap";
 import React from "react";
 import Product from "../../store/models/product";
-
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 /**
  * @param {Product} props
  * @returns {JSX.Element}
  * @constructor
  */
 export function ProductCard(props) {
-  const {image, title, price, rating} = props;
+  const {image, title, price, rating,id} = props;
 
   return (
-    <Card class="outline-dark" className="product-card h-100">
+    <Link to={`/product/${id}`}>
+      <Card class="outline-dark" className="product-card h-100">
       <div className="product-card-image p-3">
         <Card.Img variant="top" src={image}/>
       </div>
@@ -26,5 +27,6 @@ export function ProductCard(props) {
       <Button type="button" variant="outline-dark">Buy</Button>
       <Button type="button" variant="outline-dark">Cancel</Button>
     </Card>
+    </Link>
   );
 }

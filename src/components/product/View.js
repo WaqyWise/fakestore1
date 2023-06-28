@@ -2,25 +2,25 @@ import React from 'react'
 import { useEffect } from 'react';
 import { Container,Image,Col,Button, Row, ButtonGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom/cjs/react-router-dom';
+import { useParams } from 'react-router-dom';
 import { CartIcon } from '../../icons';
 import Product from "../../store/models/product";
 import { fetchProductById } from '../../store/modules/product';
 
 export default function ProductView() {
-  const productInstanse = useSelector((state) => state.product.productInstanse);
+  const productInstance = useSelector((state) => state.product.productInstance);
   const {id} = useParams ();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProductById(id));
 
-  },[dispatch,id]);
+  },[id]);
 
   return (
    <Container>
-    <h1>Product Title :</h1>
-
+    <h1>Product Title : {id}</h1>
+    {productInstance}
 
 
     {/* <Row className="px-4 my-5">

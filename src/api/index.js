@@ -65,7 +65,7 @@ export const api = {
     browse: () => http.get("/products/categories"),
   },
   show: {
-    productById : (productId) => http.get(`/products/${productId}`)
+    productById : (id) => http.get(`/products/${id}`)
   }
 
 }

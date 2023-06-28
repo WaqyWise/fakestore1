@@ -43,6 +43,7 @@ export const productSlice = createSlice({
     total: 0,
     loading: false,
     products: [],
+    productInstance: null,
   },
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
@@ -63,10 +64,10 @@ export const productSlice = createSlice({
       state.products = action.payload;
     },
     [fetchProductById.fulfilled.type]: (state,action) => {
-      state.productInstanse = action.payload;
+      state.productInstance = action.payload;
     },
     [fetchProductById.rejected.type]: (state) => {
-      state.productInstanse = null;
+      state.productInstance = null;
     }
   }
 });
