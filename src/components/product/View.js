@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { Container,Image,Col,Button, Row, ButtonGroup } from 'react-bootstrap';
+import { Container,Card,Button, ListGroup, ButtonGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { CartIcon } from '../../icons';
@@ -19,27 +19,23 @@ export default function ProductView() {
 
   return (
    <Container>
-    <h1>Product Title : {id}</h1>
-    {productInstance}
-
-
-    {/* <Row className="px-4 my-5">
-            <Col sm={5}>
-              <Image src="https://dummyimage.com/1000x600/a19ca1/fafafa.jpg&text=Example" 
-              fluid
-              rounded
-              />
-            </Col>
-            <Col sm={7} className="py-5">
-              <h2 class="font-weight-light">Product description</h2>
-              <h2 class="font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, sunt?</h2>
-              <h1 class="font-weight-light">Price $</h1>
-              <ButtonGroup className='py-3'  >
-              <Button variant="outline-dark"><CartIcon />Add to cart</Button>
-              <Button variant="secondary">Check out!</Button>
-              </ButtonGroup>
-            </Col>
-          </Row> */}
+    <h1>Product Title : {productInstance?.title}</h1>
+    
+    <Card class="outline-dark" className="product-card h-100">
+      <div className="product-card-image p-3">
+        <Card.Img variant="top" src={productInstance?.image}/>
+      </div>
+      <Card.Body>
+        <Card.Title>{productInstance?.title}</Card.Title>
+      </Card.Body>
+      <ListGroup  class="outline" className="list-group-flush">
+        <ListGroup.Item>Price: ${productInstance?.price}</ListGroup.Item>
+        <ListGroup.Item>Rating: {productInstance?.rating.rate}</ListGroup.Item>
+        <ListGroup.Item>Reviews: {productInstance?.rating.count}</ListGroup.Item>
+      </ListGroup>
+      <Button type="button" variant="outline-dark">Buy</Button>
+      <Button type="button" variant="outline-dark">Cancel</Button>
+    </Card>
    </Container>
   );
 }

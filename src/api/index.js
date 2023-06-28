@@ -60,12 +60,10 @@ http.interceptors.response.use(function (response) {
 export const api = {
   product: {
     browseByCategory: (category) => http.get(`/products/category/${category}`),
+    show: (id) => http.get(`/products/${id}`),
   },
   categories: {
     browse: () => http.get("/products/categories"),
   },
-  show: {
-    productById : (id) => http.get(`/products/${id}`)
-  }
-
+ 
 }
