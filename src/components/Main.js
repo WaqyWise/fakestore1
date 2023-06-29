@@ -38,7 +38,7 @@ useEffect(() => {
             <CardGroup className='text-center py-5 '  >
                 {categories.map(category => (
                 <Card>
-                  <Link to={`/${category.id}`}><Card.Title>
+                  <Link to={`/${category.id}`} style={{textDecoration: 'none',color: 'black'}}><Card.Title>
                     {category.name}
                   </Card.Title>
                   </Link>

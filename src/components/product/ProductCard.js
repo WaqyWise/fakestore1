@@ -11,7 +11,7 @@ export function ProductCard(props) {
   const {image, title, price, rating,id} = props;
 
   return (
-    <Link to={`/product/${id}`}>
+    <Link to={`/product/${id}`} style={{textDecoration: 'none',color: 'black'}}>
       <Card class="outline-dark" className="product-card h-100">
       <div className="product-card-image p-3">
         <Card.Img variant="top" src={image}/>

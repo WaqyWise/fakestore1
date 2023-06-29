@@ -18,7 +18,7 @@ const categories = useSelector(state => state.categories.categories);
                   <ListGroup>
                     {categories.map(category => (
                   <ListGroupItem>
-                    <Link to={`/${category.id}`}>{category.name}</Link></ListGroupItem>
+                    <Link to={`/${category.id}`} style={{textDecoration: 'none',color: 'black'}}>{category.name}</Link></ListGroupItem>
                  ))}
                  
                  </ListGroup>
