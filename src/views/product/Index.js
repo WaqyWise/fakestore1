@@ -7,6 +7,7 @@ import { ProductCard } from "../../components/product/ProductCard";
 import ProductFilters from "../../components/ProductFilters";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
+import { useState } from "react";
 
 export function Index() {
   // get products and loading state from redux store using useSelector hook
@@ -14,6 +15,19 @@ export function Index() {
   const products = useSelector(state => state.product.products);
   const isEmpty = products.length === 0 && !loading;
   const categories = useSelector(state => state.categories.categories);
+  const [sortType, setSortType] = useState('rating');
+  const sortedProducts = [...products]; // Copy of mas
+
+  if (sortType === 'rating') {
+  sortedProducts.sort((a, b) => b.rating - a.rating); // Sort by Rating
+} else if (sortType === 'price-asc') {
+  sortedProducts.sort((a, b) => a.price - b.price); // Sort by High
+} else if (sortType === 'price-desc') {
+  sortedProducts.sort((a, b) => b.price - a.price); //Sort by Low
+}
+  
+  
+  
 
 
   
@@ -72,8 +86,13 @@ export function Index() {
         </Row>
        
       )}
+      {sortedProducts.map((product) =>
+      <Col xs={3} className="py-2">
+      <ProductCard key={product.id} {...product} />
+    </Col> )}
     </Col>
   </Row>
+  
         {/* {categories.map((category, index) => (
         <Link key={index} to={`/${category}`}>
           Go to {category.charAt(0).toUpperCase() + category.slice(1)}
