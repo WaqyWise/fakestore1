@@ -20,8 +20,8 @@ return (
         <Card>
         <select value={sortType} onChange={handleSortChange}>
         <option value="rating">Sort by rating</option>
-        <option value="price-asc">Sort by Price(Low to High)</option>
-        <option value="rating">Sort by Price (High to Low)</option>
+        <option value="price-asc">Sort by Price Low to High</option>
+        <option value="rating">Sort by Price High to Low</option>
       </select>
           <Card.Body>
             <Accordion defaultActiveKey="0">

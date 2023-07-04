@@ -31,7 +31,34 @@ export const fetchProductById = createAsyncThunk(
     }
   }
 );
+// Range min/max Price
+export const setMinPrice = (minPrice) => ({
+  type: 'product/setMinPrice',
+  payload: minPrice,
+});
 
+export const setMaxPrice = (maxPrice) => ({
+  type: 'product/setMaxPrice',
+  payload: maxPrice,
+});
+
+const productReducer = (state = initialState, action) => {
+  switch (action.type) {
+    // ...
+    case 'product/setMinPrice':
+      return {
+        ...state,
+        minPrice: action.payload,
+      };
+    case 'product/setMaxPrice':
+      return {
+        ...state,
+        maxPrice: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 
 // create product module
@@ -44,6 +71,8 @@ export const productSlice = createSlice({
     loading: false,
     products: [],
     productInstance: null,
+    minPrice: 0,
+    maxPrice: 0,
   },
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
