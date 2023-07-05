@@ -29,15 +29,14 @@ export function Index() {
     })
     .sort((a, b) => {
       if ( sortType ===  'rating' ) {
-        b.rating - a.rating // Sort by Rating
         return  b.rating - a.rating; 
       }
        else if ( sortType === 'priceLowToHigh') {
-        b.price - a.price  //Sort by Low
         return b.price - a.price  ; 
       } else if (sortType === 'priceHighToLow') {
-        a.price - b.price // Sort by High
         return  a.price - b.price;
+      }else {
+        return 0;
       }
     })
   
