@@ -16,29 +16,27 @@ export function Index() {
   const isEmpty = products.length === 0 && !loading;
   const categories = useSelector(state => state.categories.categories);
   const [sortType, setSortType] = useState('rating');
-  const sortedProducts = [...products]; // Copy of mas
-
-  if (sortType === 'rating') {
-  sortedProducts.sort((a, b) => b.rating - a.rating); // Sort by Rating
-} else if (sortType === 'price-asc') {
-  sortedProducts.sort((a, b) => a.price - b.price); // Sort by High
-} else if (sortType === 'price-desc') {
-  sortedProducts.sort((a, b) => b.price - a.price); //Sort by Low
-}
-
-
-const minPrice = useSelector((state) => state.product.minPrice);
-const maxPrice = useSelector((state) => state.product.maxPrice);
-  const filteredProducts = products.filter((product) => {
-    if (!minPrice || !maxPrice) {
-      return true;
-    }
-    return product.price >= minPrice && product.price <= maxPrice;
-  });
+  const minPrice = useSelector((state) => state.product.minPrice);
+  const maxPrice = useSelector((state) => state.product.maxPrice);
   
   
-
-
+  const filteredAndSortedProducts = products
+    .filter((product) => {
+      if (!minPrice || !maxPrice) {
+        return true;
+      }
+      return product.price >= minPrice && product.price <= maxPrice;
+    })
+    .sort((a, b) => {
+      if (sortType === 'rating') {
+        products.sort((a, b) => b.rating - a.rating); // Sort by Rating
+      } else if (sortType === 'priceLowToHigh') {
+        products.sort((a, b) => a.price - b.price); // Sort by High
+      } else if (sortType === 'priceHighToLow') {
+        products.sort((a, b) => b.price - a.price); //Sort by Low
+      }
+      
+    })
   
   // initialize dispatch function using useDispatch hook
   const dispatch = useDispatch();
@@ -91,19 +89,16 @@ const maxPrice = useSelector((state) => state.product.maxPrice);
             <Col xs={3} className="py-2">
               <ProductCard key={product.id} {...product} />
             </Col>
-          ))}
-        </Row>
-       
+          ))};
+        {filteredAndSortedProducts.map((product) =>  (
+          <Col xs={3} className="py-2">
+          <ProductCard key={product.id} {...product} />
+          </Col>
+        ))}
+          </Row>
       )}
-      {sortedProducts.map((product) =>
-      <Col xs={3} className="py-2">
-      <ProductCard key={product.id} {...product} />
-    </Col> 
-    )};
-     {filteredProducts.map((product) => 
-     <Col xs={3} className="py-2">
-     <ProductCard key={product.id} {...product} />
-     </Col>)};
+      
+    
     
    
     
