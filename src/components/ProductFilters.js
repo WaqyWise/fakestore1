@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { setMaxPrice , setMinPrice } from '../store/modules/product';
+
 const ProductFilters = () => {
 const categories = useSelector(state => state.categories.categories);
 const products = useSelector(state => state.product.products);
@@ -49,18 +51,14 @@ return (
             <Form.Label><h1>Price Range:</h1></Form.Label>
             <Form.Range style={{ width: '380px' }} /> */}
           <input
-          type = "range"
-          min = {0}
-          max ={maxPrice} //Max price from API
+          type = "text"
           value= {minPrice}
-          onChange = {(event) => dispatch(minPrice(event.target.value))} 
+          onChange = {(event) => dispatch(setMinPrice(event.target.value))} 
           />
           <input
-          type = "range"
-          min = {0}
-          max ={maxPrice} //Max price from API
+          type = "text"
           value= {maxPrice}
-          onChange = {(event) => dispatch(maxPrice(event.target.value))} 
+          onChange = {(event) => dispatch(setMaxPrice(event.target.value))} 
           />
           </Card.Body>
         </Card>

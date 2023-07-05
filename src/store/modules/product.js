@@ -32,24 +32,6 @@ export const fetchProductById = createAsyncThunk(
   }
 );
 
-const productReducer = (state = initialState, action) => {
-  switch (action.type) {
-    // ...
-    case 'product/setMinPrice':
-      return {
-        ...state,
-        minPrice: action.payload,
-      };
-    case 'product/setMaxPrice':
-      return {
-        ...state,
-        maxPrice: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-
 
 // create product module
 export const productSlice = createSlice({
