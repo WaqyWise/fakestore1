@@ -25,7 +25,16 @@ export function Index() {
 } else if (sortType === 'price-desc') {
   sortedProducts.sort((a, b) => b.price - a.price); //Sort by Low
 }
-  
+
+
+const minPrice = useSelector((state) => state.product.minPrice);
+const maxPrice = useSelector((state) => state.product.maxPrice);
+  const filteredProducts = products.filter((product) => {
+    if (!minPrice || !maxPrice) {
+      return true;
+    }
+    return product.price >= minPrice && product.price <= maxPrice;
+  });
   
   
 
@@ -89,7 +98,17 @@ export function Index() {
       {sortedProducts.map((product) =>
       <Col xs={3} className="py-2">
       <ProductCard key={product.id} {...product} />
-    </Col> )}
+    </Col> 
+    )};
+     {filteredProducts.map((product) => 
+     <Col xs={3} className="py-2">
+     <ProductCard key={product.id} {...product} />
+     </Col>)};
+    
+   
+    
+    
+    
     </Col>
   </Row>
   
