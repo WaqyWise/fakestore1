@@ -32,7 +32,7 @@ export const fetchProductById = createAsyncThunk(
   }
 );
 
-const productReducer = (state, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
     // ...
     case 'product/setMinPrice':
