@@ -2,6 +2,10 @@ import {Button, Card, ListGroup} from "react-bootstrap";
 import React from "react";
 import Product from "../../store/models/product";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/modules/cart";
+
+
 /**
  * @param {Product} props
  * @returns {JSX.Element}
@@ -9,7 +13,10 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
  */
 export function ProductCard(props) {
   const {image, title, price, rating,id} = props;
-
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart({ Product, quantity : 1}));
+  }
   return (
     <Link to={`/product/${id}`} style={{textDecoration: 'none',color: 'black'}}>
       <Card class="outline-dark" className="product-card h-100">
@@ -24,7 +31,7 @@ export function ProductCard(props) {
         <ListGroup.Item>Rating: {rating.rate}</ListGroup.Item>
         <ListGroup.Item>Reviews: {rating.count}</ListGroup.Item>
       </ListGroup>
-      <Button type="button" variant="outline-dark">Buy</Button>
+      <Button type="button" variant="outline-dark" onClick={handleAddToCart}>Add to Cart</Button>
       <Button type="button" variant="outline-dark">Cancel</Button>
     </Card>
     </Link>

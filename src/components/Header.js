@@ -8,7 +8,11 @@ import { useSelector } from "react-redux";
 const Header = () => {
     const products = useSelector(state => state.product.products);
     const isLoading = useSelector(state => state.product.loading);
-  return (
+    const cartItems = useSelector((state) => state.cart.items);
+    const cartItemCount = cartItems.reduce((count, item) => count + item.quantity, 0);
+  
+  
+    return (
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
@@ -32,7 +36,10 @@ const Header = () => {
             )}
           </div>
         </Container>
+        <div>
         <CartIcon />
+        <div>Cart: {cartItemCount}</div>
+        </div>
       </Navbar>
     </div>
   )
