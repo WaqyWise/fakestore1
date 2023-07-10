@@ -36,10 +36,10 @@ const Header = () => {
             )}
           </div>
         </Container>
-        <div>
+        <Link to="/cart">
         Cart: {cartItemCount}<CartIcon />
-        <div></div>
-        </div>
+        </Link>
+      
       </Navbar>
     </div>
   )

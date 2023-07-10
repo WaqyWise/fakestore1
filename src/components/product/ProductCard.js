@@ -16,12 +16,14 @@ export function ProductCard(props) {
   const {image, title, price, rating,id} = product;
   const dispatch = useDispatch();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (event) => {
+    event.preventDefault();
     dispatch(addToCart({ product: product, quantity : 1}));
   }
 
-  const handleRemoveItem = () => {
-    dispatch(removeItem(item.product.id));
+  const handleRemoveItem = (event) => {
+    event.preventDefault();
+    dispatch(removeItem(id));
   } 
   return (
     <Link to={`/product/${id}`} style={{textDecoration: 'none',color: 'black'}}>

@@ -17,6 +17,7 @@ export default function ProductView() {
 
   },[id]);
 
+  
   return (
 
      <div> 
@@ -40,7 +41,7 @@ export default function ProductView() {
           <ListGroup.Item>Reviews: {productInstance?.rating.count}</ListGroup.Item>
           <ButtonGroup>
           <Button variant="dark" >Add cart!</Button>
-          <Button variant="danger">Check out! </Button>
+          <Button variant="danger" >Check out! </Button>
           </ButtonGroup>
 
         </ListGroup>
