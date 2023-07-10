@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateQuantity, removeItem } from '../store/modules/cart'
 import product from '../store/modules/product';
+import { Image } from 'react-bootstrap';
+
 
 
 const Cart = () => {
@@ -19,14 +21,15 @@ const Cart = () => {
   
     return (
         <div>
-        <h1>Cart</h1>
+        <h1>Cart :</h1>
         {cartItems.length === 0 ? (
           <p>Your cart is empty.</p>
         ) : (
           <ul>
             {cartItems.map((item) => (
               <li key={item.product.id}>
-                <h3>{item.product.name}</h3>
+                {/* <Image>{item.product.image}</Image> */}
+                <h3>{product.name}</h3>
                 <p>Price: {item.product.price}</p>
                 <p>
                   Quantity:

@@ -15,6 +15,9 @@ export function App() {
     <div>
       <Header />
       <Switch>
+      <Route exact path="/cart">
+          <Cart />
+        </Route>
         <Route exact path="/:categoryName">
           <Index />
         </Route>
@@ -24,9 +27,7 @@ export function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
+        
       </Switch>
         <Footer />
   </div>
