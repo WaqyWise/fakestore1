@@ -37,8 +37,8 @@ const Header = () => {
           </div>
         </Container>
         <div>
-        <CartIcon />
-        <div>Cart: {cartItemCount}</div>
+        Cart: {cartItemCount}<CartIcon />
+        <div></div>
         </div>
       </Navbar>
     </div>

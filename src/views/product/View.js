@@ -39,7 +39,7 @@ export default function ProductView() {
           <ListGroup.Item>Rating: {productInstance?.rating.rate}</ListGroup.Item>
           <ListGroup.Item>Reviews: {productInstance?.rating.count}</ListGroup.Item>
           <ButtonGroup>
-          <Button variant="dark">Add cart!</Button>
+          <Button variant="dark" >Add cart!</Button>
           <Button variant="danger">Check out! </Button>
           </ButtonGroup>
 

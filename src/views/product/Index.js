@@ -89,12 +89,12 @@ export function Index() {
         <Row className="align-items-stretch">
           {products.map(product => (
             <Col xs={3} className="py-2">
-              <ProductCard key={product.id} {...product} />
+              <ProductCard key={product.id} product={product} />
             </Col>
           ))};
         {filteredAndSortedProducts.map((product) =>  (
           <Col xs={3} className="py-2">
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id} product={product} />
           </Col>
         ))}
           </Row>

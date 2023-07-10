@@ -3,7 +3,7 @@ import React from "react";
 import Product from "../../store/models/product";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/modules/cart";
+import { addToCart, removeItem } from "../../store/modules/cart";
 
 
 /**
@@ -12,11 +12,17 @@ import { addToCart } from "../../store/modules/cart";
  * @constructor
  */
 export function ProductCard(props) {
-  const {image, title, price, rating,id} = props;
+  const {product} = props;
+  const {image, title, price, rating,id} = product;
   const dispatch = useDispatch();
+
   const handleAddToCart = () => {
-    dispatch(addToCart({ Product, quantity : 1}));
+    dispatch(addToCart({ product: product, quantity : 1}));
   }
+
+  const handleRemoveItem = () => {
+    dispatch(removeItem(item.product.id));
+  } 
   return (
     <Link to={`/product/${id}`} style={{textDecoration: 'none',color: 'black'}}>
       <Card class="outline-dark" className="product-card h-100">
@@ -32,8 +38,9 @@ export function ProductCard(props) {
         <ListGroup.Item>Reviews: {rating.count}</ListGroup.Item>
       </ListGroup>
       <Button type="button" variant="outline-dark" onClick={handleAddToCart}>Add to Cart</Button>
-      <Button type="button" variant="outline-dark">Cancel</Button>
+      <Button type="button" variant="outline-dark" onClick={handleRemoveItem}>Cancel</Button>
     </Card>
     </Link>
+    
   );
 }
