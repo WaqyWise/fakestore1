@@ -37,7 +37,10 @@ const Header = () => {
           </div>
         </Container>
         <Link to="/cart">
-        Cart: {cartItemCount}<CartIcon />
+        <Navbar.Brand style={{justifyContent: 'center'}}  className="py-5">
+
+        <Button variant="outline-dark"><CartIcon />Cart: {cartItemCount}</Button>
+        </Navbar.Brand>
         </Link>
       
       </Navbar>

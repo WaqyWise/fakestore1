@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateQuantity, removeItem } from '../store/modules/cart'
 import product from '../store/modules/product';
-import { Image, Card, Col, Row, ListGroup, Button, InputGroup,Form } from 'react-bootstrap';
+import { Image, Card, Col, Row, ListGroup, Button, InputGroup,Form, Container, Table } from 'react-bootstrap';
 
 
 
@@ -20,42 +20,86 @@ const Cart = () => {
   
   
     return (
-        <div>
-        <h1 style={{justifyContent: 'center'}}>Cart :</h1>
+        <Container>
+        <h1>Checkout</h1>
         {cartItems.length === 0 ? (
-          <p>Your cart is empty.</p>
+         <div> 
+            <h2>Your cart is empty
+                <div>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="black" class="bi bi-cart-x" viewBox="0 0 16 16">
+                    <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                   </svg>
+                </div>
+         </h2>
+          </div>
         ) : (
-          <Row className="px-2 my-5 " style={{alignItems :'center' , justifyContent: 'center'}}>
-            {cartItems.map((item) => (
-              <Col key={item.product.id} sm={7}>
-                 <Col className='text-center my-5 '>
-                    <Image align="center" src={item.product.image} fluid width={80} height={80} />
-                </Col>
-                <ListGroup class="outline" className="list-group-flush">
-                <h2>{item.product.title}</h2>
-                <h2>Product Description :</h2>
-                <ListGroup.Item>Price: ${item.product.price}</ListGroup.Item>
-                <ListGroup.Item>Rating: {item.product.rating.rate}</ListGroup.Item>
-                <ListGroup.Item>Reviews: {item.product.rating.count}</ListGroup.Item>
+          <Row >
+            <h1>Order Summary</h1>
 
-                </ListGroup>
-               
-                <InputGroup>
-                <h2>Quantity:</h2>
+            {cartItems.map((item) => (
+              <Table  class="table table-hover" key={item.product.id} >
+                  <thead class="fixed">
+                    <tr >
+                      <th >Image</th>
+                      <th >Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      <th></th>
+                    </tr>
+            </thead>
+                <tbody>
+              <tr>
+                <td>
+                  <Image  src={item.product.image} width={50} height={50} />
+                </td>
+                <td>{item.product.title}</td>
+                <td>Price: ${item.product.price}</td>
+                <td>  
+                
                 <Form.Control
                 placeholder="Recipient's username"
                 type="number"
                 value={item.quantity}
                 onChange={(e) => handleQuantityChange(item.product.id, parseInt(e.target.value))}
                 />
-            </InputGroup>
-                <Button onClick={() => handleRemoveItem(item.product.id)} variant="danger" >Remove</Button>
-              </Col>
+                </td>
+                <td></td>
+                <td><Button onClick={() => handleRemoveItem(item.product.id)} variant="danger" >Remove</Button></td>
+              </tr>
+              </tbody>
+              </Table>
+            
+
             ))}
           </Row>
+          
         )}
-      </div>
-
+        
+           
+            {/* <tbody>
+              <tr>
+                <td></td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td >Larry </td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody> */}
+          
+      </Container>
   )
 }
 
