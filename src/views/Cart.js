@@ -38,18 +38,15 @@ const Cart = () => {
             <h1>Order Summary</h1>
 
             {cartItems.map((item) => (
-              <Table  class="table table-hover" key={item.product.id} >
-                  <thead class="fixed">
-                    <tr >
-                      <th >Image</th>
-                      <th >Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Total</th>
-                      <th></th>
-                    </tr>
-            </thead>
-                <tbody>
+              
+            <div>
+            <tr >  
+                <th >Image</th>
+                <th >Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>     
+            </tr>
               <tr>
                 <td>
                   <Image  src={item.product.image} width={50} height={50} />
@@ -67,38 +64,18 @@ const Cart = () => {
                 </td>
                 <td></td>
                 <td><Button onClick={() => handleRemoveItem(item.product.id)} variant="danger" >Remove</Button></td>
-              </tr>
-              </tbody>
-              </Table>
-            
-
+          </tr>
+          </div>    
             ))}
           </Row>
           
         )}
-        
-           
-            {/* <tbody>
-              <tr>
-                <td></td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td >Larry </td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody> */}
-          
+        <Table  class="table table-hover" style={{width: '100px'}} >
+          <thead class="fixed">       
+          </thead>
+          <tbody>
+          </tbody>
+          </Table>
       </Container>
   )
 }
