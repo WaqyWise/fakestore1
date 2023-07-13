@@ -79,7 +79,7 @@ const handleQuantityChange = (productId, quantity) => {
                 onChange={(e) => handleQuantityChange(item.product.id, parseInt(e.target.value))}
               />
             </td>
-            <td></td>
+            <td>{item.quantity*item.product.price}</td>
             <td>
               <Button onClick={() => handleRemoveItem(item.product.id)} variant="danger">
                 Remove
