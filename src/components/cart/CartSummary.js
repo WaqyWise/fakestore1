@@ -15,10 +15,10 @@ const CartSummary = ({ totalPrice, totalItems, discount, shipping}) => {
         </Card.Header>
         <ListGroup varian="flush">
             <ListGroup.Item>Total Items : {totalItems}</ListGroup.Item>
-            <ListGroup.Item>Total Price : ${totalPrice}</ListGroup.Item>
+            <ListGroup.Item>Total Price : ${totalPrice.toFixed(2)}</ListGroup.Item>
             <ListGroup.Item>Discount : ${discount}</ListGroup.Item>
             <ListGroup.Item>Shipping : ${shipping}</ListGroup.Item>
-            <ListGroup.Item style={{fontWeight: 'bold' }}>Total : ${totalPrice - (discount + shipping)}</ListGroup.Item>      
+            <ListGroup.Item style={{fontWeight: 'bold' }}>Total : ${(totalPrice - (discount + shipping)).toFixed(2)}</ListGroup.Item>      
             <Button variant="outline-dark">Checkout</Button>
         </ListGroup>
     </Card>
