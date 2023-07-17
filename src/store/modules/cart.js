@@ -23,9 +23,13 @@ export const cartSlice = createSlice ({
         },
         updateQuantity: (state,action) => {
             const { productId, quantity } = action.payload;
-            const item = state.items.find((item) => item.product.id === productId);
-            if (item) {
-                item.quantity = quantity;
+            
+            if(quantity >= 0 ) {
+              const existingItem = state.items.find(item => item.product.id === productId); 
+            
+            if (existingItem) {
+              existingItem.quantity = quantity;
+            }
             }
         },
         removeItem: (state, action) => {
