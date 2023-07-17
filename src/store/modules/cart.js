@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { getCartFromLocalStorage } from "../../services/cart";
 
 
 //CartSLice 
@@ -7,7 +7,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const cartSlice = createSlice ({
     name: "cart",
     initialState: {
-      items: [], // Mass of products in cart  
+      items: getCartFromLocalStorage(), // Iniflizetion cart from localStorage 
     },
     reducers: {
         addToCart: (state,action) => {
@@ -31,10 +31,13 @@ export const cartSlice = createSlice ({
         removeItem: (state, action) => {
             const productId = action.payload;
             state.items = state.items.filter((item) => item.product.id !== productId);
+        },
+        clearCart: (state) => {
+          state.items = [];
         }
     },
   })
 
-  export const { addToCart, updateQuantity, removeItem } = cartSlice.actions;
+  export const { addToCart, updateQuantity, removeItem, clearCart } = cartSlice.actions;
 
   export default cartSlice.reducer;

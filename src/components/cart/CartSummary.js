@@ -1,10 +1,20 @@
 import React from 'react'
 import { Button, Card, ListGroup } from 'react-bootstrap'
-
+import { clearCart} from '../../store/modules/cart';
+import { clearCartFromLocalStorage } from '../../services/cart';
+import {  useDispatch } from 'react-redux';
 
 
 const CartSummary = ({ totalPrice, totalItems, discount, shipping}) => {
-  return (
+    const dispatch = useDispatch();
+   
+    const handleCheckout = () => {
+        dispatch(clearCart());
+        clearCartFromLocalStorage();
+      }
+ 
+ 
+    return (
     <Card style={{ width: '18rem'}}>
         <Card.Header>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-card-checklist" viewBox="0 0 16 20">
@@ -19,7 +29,9 @@ const CartSummary = ({ totalPrice, totalItems, discount, shipping}) => {
             <ListGroup.Item>Discount : ${discount}</ListGroup.Item>
             <ListGroup.Item>Shipping : ${shipping}</ListGroup.Item>
             <ListGroup.Item style={{fontWeight: 'bold' }}>Total : ${(totalPrice - (discount + shipping)).toFixed(2)}</ListGroup.Item>      
-            <Button variant="outline-dark">Checkout</Button>
+            <Button
+            onClick={handleCheckout} 
+            variant="outline-dark">Checkout</Button>
         </ListGroup>
     </Card>
   )

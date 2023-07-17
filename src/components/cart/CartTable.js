@@ -4,7 +4,7 @@ import { Table, Image, Form, Button, Col, Container, Row} from 'react-bootstrap'
 import { updateQuantity, removeItem } from '../../store/modules/cart'
 import CartSummary from './CartSummary';
 import { calculateNewValue } from '@testing-library/user-event/dist/utils';
-
+import {  saveCartToLocalStorage } from '../../services/cart';
 
 const CartTable = () => {
 const cartItems = useSelector((state) => state.cart.items);
@@ -13,13 +13,16 @@ const dispatch = useDispatch();
 
 
 const handleQuantityChange = (productId, quantity) => {
-    dispatch(updateQuantity({productId, quantity}))
+    dispatch(updateQuantity({productId, quantity}));
+    saveCartToLocalStorage(cartItems); // Save to cart and localStorage
   };
 
   const handleRemoveItem = (productId) => {
-    dispatch(removeItem(productId))
+    dispatch(removeItem(productId));
+    saveCartToLocalStorage(cartItems); // Save to cart and localStorage
   };
 
+  
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
@@ -79,7 +82,7 @@ const handleQuantityChange = (productId, quantity) => {
                 onChange={(e) => handleQuantityChange(item.product.id, parseInt(e.target.value))}
               />
             </td>
-            <td>{(item.quantity*item.product.price).toFixed(2)}</td>
+            <td>${(item.quantity*item.product.price).toFixed(2)}</td>
             <td>
               <Button onClick={() => handleRemoveItem(item.product.id)} variant="danger">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
