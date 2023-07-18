@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCartFromLocalStorage } from "../../services/cart";
+import { getCartFromLocalStorage, saveCartToLocalStorage } from "../../services/cart";
 
 
 //CartSLice 
@@ -31,6 +31,7 @@ export const cartSlice = createSlice ({
               existingItem.quantity = quantity;
             }
             }
+            saveCartToLocalStorage();
         },
         removeItem: (state, action) => {
             const productId = action.payload;

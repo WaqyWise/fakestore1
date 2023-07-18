@@ -3,25 +3,24 @@ import { Container, Navbar,  Button,  Card, ListGroup, InputGroup, Form} from "r
 
 const Footer = () => {
   return (
-    <div>
-         <Navbar bg="light" expand="lg">
-        <Container class="column">
-          <Navbar.Brand href="/">Fake Store</Navbar.Brand>
-          <Card style={{ width: '14rem', height: '8rem', borderStyle:'hidden' }}>
+      <Navbar bg="light" expand="lg" style={{width: 'avto', height: 'avto'}}>
+        <Container class="column" style={{marginLeft: '50px'}}>
+          <Navbar.Brand href="/" >Fake Store</Navbar.Brand>
+          <Card style={{ width: '150px', height: '', borderStyle:'hidden' }}>
             <ListGroup variant="dark" >
               <ListGroup.Item style={{fontWeight: 'bold'}}>Product</ListGroup.Item>
               <ListGroup.Item>Features</ListGroup.Item>
               <ListGroup.Item>Pricing</ListGroup.Item>
               </ListGroup>
           </Card>
-          <Card style={{ width: '14rem', height: '8rem',borderStyle:'hidden' }}>
+          <Card style={{ width: 'avto', height: 'avto',borderStyle:'hidden' }}>
             <ListGroup variant="dark">
               <ListGroup.Item style={{fontWeight: 'bold'}}>Resources</ListGroup.Item>
               <ListGroup.Item>Blog</ListGroup.Item>
               <ListGroup.Item>User guides</ListGroup.Item>
               </ListGroup>
           </Card>
-          <Card style={{ width: '14rem', height: '8rem',borderStyle:'hidden' }}>
+          <Card style={{ width: 'avto', height: 'avto',borderStyle:'hidden' }}>
             <ListGroup variant="dark" >
               <ListGroup.Item style={{fontWeight: 'bold'}}>Company</ListGroup.Item>
               <ListGroup.Item>About</ListGroup.Item>
@@ -39,7 +38,6 @@ const Footer = () => {
           </InputGroup>
         </Container>
         </Navbar>
-    </div>
   )
 }
 

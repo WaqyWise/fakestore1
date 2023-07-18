@@ -18,16 +18,16 @@ useEffect(() => {
 
   return (
     <div>
-      <Container>
-          <Row className="px-4 my-5">
-          <Col sm={5}>
+      <Container className='py-5'>
+          <Row className="py-5 my-5">
+          <Col sm={5} >
             <Image src="https://dummyimage.com/1000x600/a19ca1/fafafa.jpg&text=Example" 
               fluid
               rounded
               className="" 
               />
             </Col>
-            <Col sm={7}>
+            <Col sm={6}  classname='py-5' style={{marginLeft: '110px'}}>
               <h1 class="font-weight-light">The Best Place To </h1>
               <h1 class="font-weight-light">Find And Buy</h1>
               <h1 class="font-weight-light">Amazing Products</h1>
@@ -35,7 +35,7 @@ useEffect(() => {
             </Col>
             
           </Row>
-          <Row>
+          <Row className='py-10'>
           <CardGroup  className='text-center'  >
             <Card>
               <div>
@@ -66,7 +66,7 @@ useEffect(() => {
             </div>
             </Card>
           </CardGroup>
-            <CardGroup className='text-center py-2 '  >
+            <CardGroup className='text-center py-3 '  >
                 {categories.map(category => (
                 <Card>
                   <Link to={`/${category.id}`} style={{textDecoration: 'none',color: 'black'}}>

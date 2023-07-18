@@ -14,7 +14,7 @@ const Header = () => {
   
     return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" style={{width: 'avto', height: 'avto'}}>
         <Container>
           <Navbar.Brand href="/">Fake Store</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

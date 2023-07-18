@@ -4,19 +4,16 @@ import product from '../store/modules/product';
 import { Image, Card, Col, Row, ListGroup, Button, InputGroup,Form, Container, Table } from 'react-bootstrap';
 import CartPlaceholder from '../components/cart/CartPlaceholder';
 import CartTable from '../components/cart/CartTable';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
  
-
- 
-  
-  
   return (
-    <Container>
-      <h1>Checkout</h1>
+    <Container className='py-5' style={{width: 'avto'}}>
+      <CardHeader >Checkout</CardHeader>
       {cartItems.length === 0 ? (
       <CartPlaceholder />
       ) : (   
