@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Table, Image, Form, Button, Col, Container, Row} from 'react-bootstrap'
 import { updateQuantity, removeItem } from '../../store/modules/cart'
 import CartSummary from './CartSummary';
-import { calculateNewValue } from '@testing-library/user-event/dist/utils';
-import {  saveCartToLocalStorage } from '../../services/cart';
 
 const CartTable = () => {
 const cartItems = useSelector((state) => state.cart.items);
