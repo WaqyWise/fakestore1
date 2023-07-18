@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCartFromLocalStorage, saveCartToLocalStorage } from "../../services/cart";
+import { useSelector } from "react-redux";
+
 
 
 //CartSLice 
 
-export const cartSlice = createSlice ({
+export const cartSlice = createSlice (
+  {
+  
     name: "cart",
     initialState: {
       items: getCartFromLocalStorage(), // Iniflizetion cart from localStorage 
     },
     reducers: {
-        addToCart: (state,action) => {
+        addToCart: (state,action,cartItems) => {
+          
           const { product, quantity } = action.payload;
           const existingItem = state.items.find((item) => item.product.id === product.id);
           if (existingItem) {
@@ -20,10 +25,10 @@ export const cartSlice = createSlice ({
             // If don't have product in cart, add product
             state.items.push({ product, quantity });
           }
-          saveCartToLocalStorage();
+          saveCartToLocalStorage(cartItems);
 
         },
-        updateQuantity: (state,action) => {
+        updateQuantity: (state,action,cartItems) => {
             const { productId, quantity } = action.payload;
             
             if(quantity >= 0 ) {
@@ -33,16 +38,17 @@ export const cartSlice = createSlice ({
               existingItem.quantity = quantity;
             }
             }
-            saveCartToLocalStorage();
+            saveCartToLocalStorage(cartItems);
         },
-        removeItem: (state, action) => {
+        removeItem: (state, action,cartItems) => {
             const productId = action.payload;
             state.items = state.items.filter((item) => item.product.id !== productId);
-            saveCartToLocalStorage();
+            saveCartToLocalStorage(cartItems);
 
         },
-        clearCart: (state) => {
+        clearCart: (state,cartItems) => {
           state.items = [];
+          saveCartToLocalStorage(cartItems)
         }
     },
   })
