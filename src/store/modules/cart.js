@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCartFromLocalStorage, saveCartToLocalStorage } from "../../services/cart";
+import { clearCartFromLocalStorage, getCartFromLocalStorage, saveCartToLocalStorage } from "../../services/cart";
 import { useSelector } from "react-redux";
 
 
@@ -48,8 +48,8 @@ export const cartSlice = createSlice (
         },
         clearCart: (state) => {
           state.items = [];
-          saveCartToLocalStorage(state.items)
-        }
+          clearCartFromLocalStorage(state.items)
+        } 
     },
   })
 
