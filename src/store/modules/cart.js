@@ -20,6 +20,8 @@ export const cartSlice = createSlice ({
             // If don't have product in cart, add product
             state.items.push({ product, quantity });
           }
+          saveCartToLocalStorage();
+
         },
         updateQuantity: (state,action) => {
             const { productId, quantity } = action.payload;
@@ -36,6 +38,8 @@ export const cartSlice = createSlice ({
         removeItem: (state, action) => {
             const productId = action.payload;
             state.items = state.items.filter((item) => item.product.id !== productId);
+            saveCartToLocalStorage();
+
         },
         clearCart: (state) => {
           state.items = [];

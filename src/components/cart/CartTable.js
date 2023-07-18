@@ -14,12 +14,11 @@ const dispatch = useDispatch();
 
 const handleQuantityChange = (productId, quantity) => {
     dispatch(updateQuantity({productId, quantity}));
-    saveCartToLocalStorage(cartItems); // Save to cart and localStorage
+    
   };
 
   const handleRemoveItem = (productId) => {
     dispatch(removeItem(productId));
-    saveCartToLocalStorage(cartItems); // Save to cart and localStorage
   };
 
   
